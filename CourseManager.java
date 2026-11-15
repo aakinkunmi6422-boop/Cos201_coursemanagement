@@ -66,11 +66,8 @@ public class CourseManager {
         return courses.get(index).getUnits() + totalUnits(index + 1);
     }
 
-    /**
-     * Writes every course to a text file, one course per line.
-     *
-     * @throws IOException if the file cannot be written
-     */
+    /** Writes every course to a text file, one course per line. **/
+
     public void saveToFile(String filename) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
             for (Course course : courses) {
@@ -80,13 +77,7 @@ public class CourseManager {
         }
     }
 
-    /**
-     * Replaces the current list with the courses stored in the file.
-     * Bad lines are skipped.
-     *
-     * @return the number of bad lines that were skipped
-     * @throws IOException if the file cannot be read (e.g. it does not exist)
-     */
+    /** This replaces the current list with courses stored in the file **/
     public int loadFromFile(String filename) throws IOException {
         List<Course> loaded = new ArrayList<>();
         int skipped = 0;

@@ -1,9 +1,6 @@
 import java.io.IOException;
 import java.util.Scanner;
 
-/**
- * Student Course Management Portal - text based interface.
- */
 public class Main {
     private static final String DEFAULT_FILE = "courses.txt";
     private static final int MAX_UNITS = 10;
@@ -22,9 +19,6 @@ public class Main {
         scanner.close();
     }
 
-    // ------------------------------------------------------------------
-    // Menu (RECURSIVE: the menu calls itself until the user chooses Exit)
-    // ------------------------------------------------------------------
     private void runMenu() {
         printMenu();
         String choice = readLine("Enter your choice (1-7): ");
@@ -56,9 +50,7 @@ public class Main {
         runMenu(); // recursive call: show the menu again
     }
 
-    // ------------------------------------------------------------------
-    // Menu actions
-    // ------------------------------------------------------------------
+
     private void addCourse() {
         printHeader("ADD NEW COURSE");
         try {
@@ -142,9 +134,7 @@ public class Main {
         }
     }
 
-    // ------------------------------------------------------------------
-    // Input helpers (loops keep asking until the input is valid)
-    // ------------------------------------------------------------------
+
     private String readLine(String prompt) {
         System.out.print(prompt);
         if (!scanner.hasNextLine()) {
@@ -155,7 +145,7 @@ public class Main {
         return scanner.nextLine().trim();
     }
 
-    /** Code format: 2-4 letters followed by 3 digits, e.g. CSC101 (spaces are removed). */
+
     private String readCourseCode() {
         while (true) {
             String code = readLine("Course code (e.g. CSC101): ").replaceAll("\\s+", "").toUpperCase();
@@ -201,7 +191,7 @@ public class Main {
         return filename.isEmpty() ? DEFAULT_FILE : filename;
     }
 
-    /** Simple string processing: "intro to programming" -> "Intro To Programming". */
+
     private String toTitleCase(String text) {
         StringBuilder result = new StringBuilder();
         for (String word : text.split(" ")) {
@@ -212,23 +202,21 @@ public class Main {
                 result.append(' ');
             }
             result.append(Character.toUpperCase(word.charAt(0)))
-                  .append(word.substring(1).toLowerCase());
+                    .append(word.substring(1).toLowerCase());
         }
         return result.toString();
     }
 
-    // ------------------------------------------------------------------
-    // Text GUI helpers
-    // ------------------------------------------------------------------
+
     private void printBanner() {
         System.out.println("==================================================");
-        System.out.println("      STUDENT COURSE MANAGEMENT PORTAL");
+        System.out.println("      STUDENT PORTAL                              ");
         System.out.println("==================================================");
     }
 
     private void printMenu() {
         System.out.println("\n+------------------------------------------------+");
-        System.out.println("|                  MAIN MENU                     |");
+        System.out.println("|                 STUDENT MENU                   |");
         System.out.println("+------------------------------------------------+");
         System.out.println("|  1. Add Course                                 |");
         System.out.println("|  2. View All Courses                           |");
